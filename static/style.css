@@ -1,0 +1,232 @@
+/* 🌸 General Page Setup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #b7b9fe 0%, #2506d2 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* 🌺 Header Section */
+header {
+    background: linear-gradient(90deg, #6a11cb 0%, #173f83 100%);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-bottom: 3px solid rgba(255,255,255,0.2);
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 🧠 Info Box */
+.info-box {
+    background-color: #fefefe;
+    width: 85%;
+    margin-bottom: 15px; /* was too large before */
+    max-width: 1000px;
+    margin-top: 25px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    color: #333;
+}
+
+.info-box h2 {
+    color: #000000;
+    margin-top: 0;
+}
+
+/* ⚙️ Main Container (Form + Result) */
+.main-container {
+    align-items: stretch; /* ensures equal height panels */
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 85%;
+    max-width: 1000px;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 🧩 Left Input Panel */
+.left-panel {
+    background-color: #d2c9f8;
+    border-right: 1px solid #ddd;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.left-card {
+    text-align: center;
+    width: 90%;
+    background: #d2c9f8;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.left-panel h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 350px;
+}
+
+label {
+    font-weight: 600;
+    color: #444;
+    margin-top: 12px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 🌼 Right Result Panel */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.result-card {
+    text-align: center;
+    width: 90%;
+    background: #d2c9f8;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-card h2 {
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.result-card img {
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.desc {
+    font-size: 14px;
+    color: #333;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* 🧠 Extra Info under results */
+.extra-info {
+    margin-top: 20px;
+    text-align: left;
+    background: #eef7ff;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.extra-info h3 {
+    margin-top: 0;
+    color: #0073e6;
+    font-size: 16px;
+}
+
+/* 🔍 Placeholder */
+.placeholder {
+    color: gray;
+    font-size: 16px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* ✨ Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        width: 95%;
+        margin-bottom: 40px;
+        padding: 15px;
+    }
+    .left-panel, .right-panel {
+        border: none;
+        width: 100%;
+    }
+    .left-panel {
+        padding: 20px;
+        justify-content: center;
+    }
+}

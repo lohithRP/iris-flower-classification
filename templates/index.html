@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Classification Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- 🌺 Header -->
+    <header>
+        <h1>🌸 Iris Flower Classification Project</h1>
+        <p></p>
+    </header>
+
+    <!-- 🧠 Info Section -->
+    <section class="info-box">
+        <h2>About This Project</h2>
+        <p>
+            The <b>Iris Flower Classification</b> project is a classic machine learning example.  
+            It predicts the species of an iris flower — <b>Setosa</b>, <b>Versicolor</b>, or <b>Virginica</b> —
+            based on four features: sepal length, sepal width, petal length, and petal width.
+        </p>
+        <p>
+            This model is trained using a <b>Random Forest Classifier</b> with data from the famous
+            <b>Iris Dataset</b> introduced by Sir Ronald Fisher in 1936.  
+            Enter flower measurements below to see which species it belongs to!
+        </p>
+    </section>
+
+    <!-- ⚙️ Main App Area -->
+    <div class="main-container">
+        <!-- Left side: Input form -->
+        <div class="left-panel">
+            <h2>Enter Measurements For Iris Flower</h2>
+            <form action="/predict" method="POST">
+                <label>Sepal Length (cm):</label>
+                <input type="number" step="any" name="sepal_length" value="{{ sepal_length or '' }}" required>
+
+                <label>Sepal Width (cm):</label>
+                <input type="number" step="any" name="sepal_width" value="{{ sepal_width or '' }}" required>
+
+                <label>Petal Length (cm):</label>
+                <input type="number" step="any" name="petal_length" value="{{ petal_length or '' }}" required>
+
+                <label>Petal Width (cm):</label>
+                <input type="number" step="any" name="petal_width" value="{{ petal_width or '' }}" required>
+
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+
+        <!-- Right side: Result -->
+        <div class="right-panel">
+            {% if prediction_text %}
+            <div class="result-card">
+                <h2>{{ prediction_text }}</h2>
+                {% if image_path %}
+                <img src="{{ url_for('static', filename=image_path) }}" alt="Predicted Iris">
+                {% endif %}
+                <p class="desc">{{ desc }}</p>
+
+                <div class="extra-info">
+                    <h3>🌿 How It Works</h3>
+                    <p>
+                        The model analyzes flower measurements and predicts the species
+                        by comparing them to patterns learned from the training data.
+                        Each decision tree in the Random Forest contributes a “vote”
+                        toward the final species classification.
+                    </p>
+                </div>
+            </div>
+            {% else %}
+            <div class="placeholder">
+                <p>🔍 Enter flower measurements and click Predict to see results here.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
