@@ -230,3 +230,30 @@ button:hover {
         justify-content: center;
     }
 }
+
+/* 📱 Responsive layout for mobile */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-panel, .right-panel {
+        width: 95%;
+        margin-bottom: 20px;
+    }
+
+    .input-card, .result-card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .info-box {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+}
+
