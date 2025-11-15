@@ -4,37 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iris Flower Classification Project</title>
+
+    <!-- Linking external CSS file from /static folder -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <!-- 🌺 Header -->
+    <!-- ========== HEADER SECTION ========== -->
     <header>
         <h1>🌸 Iris Flower Classification Project</h1>
         <p></p>
     </header>
 
-    <!-- 🧠 Info Section -->
+    <!-- ========== OVERVIEW / ABOUT PROJECT ========== -->
     <section class="info-box">
         <h2>About This Project</h2>
         <p>
-            The <b>Iris Flower Classification</b> project is a classic machine learning example.  
-            It predicts the species of an iris flower — <b>Setosa</b>, <b>Versicolor</b>, or <b>Virginica</b> —
-            based on four features: sepal length, sepal width, petal length, and petal width.
+            The <b>Iris Flower Classification</b> project predicts the flower species
+            (Setosa, Versicolor, Virginica) based on sepal & petal measurements.
         </p>
         <p>
-            This model is trained using a <b>Random Forest Classifier</b> with data from the famous
-            <b>Iris Dataset</b> introduced by Sir Ronald Fisher in 1936.  
-            Enter flower measurements below to see which species it belongs to!
+            The ML model used here is a <b>Random Forest Classifier</b> trained on
+            the <b>Iris Dataset</b>. Enter values below to classify a flower.
         </p>
     </section>
 
-    <!-- ⚙️ Main App Area -->
+    <!-- ========== MAIN CONTENT AREA ========== -->
     <div class="main-container">
-        <!-- Left side: Input form -->
+
+        <!-- ===== LEFT PANEL → USER INPUT FORM ===== -->
         <div class="left-panel">
             <h2>Enter Measurements For Iris Flower</h2>
+
+            <!-- Form sends data to Flask /predict route using POST -->
             <form action="/predict" method="POST">
+
                 <label>Sepal Length (cm):</label>
                 <input type="number" step="any" name="sepal_length" value="{{ sepal_length or '' }}" required>
 
@@ -51,33 +55,44 @@
             </form>
         </div>
 
-        <!-- Right side: Result -->
+        <!-- ===== RIGHT PANEL → DISPLAY PREDICTION RESULT ===== -->
         <div class="right-panel">
+
             {% if prediction_text %}
+            <!-- When prediction exists, show results -->
             <div class="result-card">
                 <h2>{{ prediction_text }}</h2>
+
+                <!-- Display flower image only if available -->
                 {% if image_path %}
                 <img src="{{ url_for('static', filename=image_path) }}" alt="Predicted Iris">
                 {% endif %}
+
                 <p class="desc">{{ desc }}</p>
 
+                <!-- Extra explanation to show how prediction works -->
                 <div class="extra-info">
                     <h3>🌿 How It Works</h3>
                     <p>
-                        The model analyzes flower measurements and predicts the species
-                        by comparing them to patterns learned from the training data.
-                        Each decision tree in the Random Forest contributes a “vote”
-                        toward the final species classification.
+                        The model compares measurements to patterns learned during training.
+                        Each tree in the Random Forest votes for a species,
+                        and the majority vote becomes the final prediction.
                     </p>
                 </div>
             </div>
+
             {% else %}
+            <!-- Default box shown before user submits input -->
             <div class="placeholder">
                 <p>🔍 Enter flower measurements and click Predict to see results here.</p>
             </div>
             {% endif %}
+
         </div>
     </div>
+    <footer>
+      <p>🔹 Web App developed by <b>Lohith | Likhil | Harshit | MP Manoj</b></p>
+    </footer>
 
 </body>
 </html>

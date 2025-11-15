@@ -1,6 +1,5 @@
 # ==========================================================
 # Title: Train and Save Iris Flower Classification Model
-# Author: Lohith's Learning Series
 # ==========================================================
 
 import pandas as pd
